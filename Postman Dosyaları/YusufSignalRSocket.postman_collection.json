@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "8f5323ab-9147-4568-bf16-31793f1776a8",
+		"name": "YusufSignalRSocket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43498695",
+		"_collection_link": "https://is7anbul-5108473.postman.co/workspace/is7anbul's-Workspace~caab98a5-c50b-4b53-8496-ed10c1872012/collection/43498695-8f5323ab-9147-4568-bf16-31793f1776a8?action=share&source=collection_link&creator=43498695"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7184/api/product/1",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"newPrice\": 44\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7184/api/product/681f9d9c2069c6faa096842b",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7184",
+					"path": [
+						"api",
+						"product",
+						"681f9d9c2069c6faa096842b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "c8f137ab-43ac-4012-9c8e-2dcbbd76687e",
+		"name": "yusufStore Mikroservis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43498695",
+		"_collection_link": "https://is7anbul-5108473.postman.co/workspace/is7anbul's-Workspace~caab98a5-c50b-4b53-8496-ed10c1872012/collection/43498695-c8f137ab-43ac-4012-9c8e-2dcbbd76687e?action=share&source=collection_link&creator=43498695"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_url}}/products?pageNumber=1&pageSize=15",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_url}}/products/018d2605-1fef-4cbf-b9b4-cbf999a85cc1",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products",
+								"018d2605-1fef-4cbf-b9b4-cbf999a85cc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_url}}/products/category/Smart Phone",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"Smart Phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Playstation 5\",\r\n    \"Category\": [\"Game Console\"],\r\n    \"Description\": \"Playstation 5 Game Console\",\r\n    \"ImageFile\": \"playstation-png\",\r\n    \"Price\": 30000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{product_url}}/products",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"018d2605-1fef-4cbf-b9b4-cbf999a85cc1\",\r\n    \"Name\": \"Playstation 5\",\r\n    \"Category\": [\"Game Console\"],\r\n    \"Description\": \"Playstation 5 Game Console\",\r\n    \"ImageFile\": \"playstation-png\",\r\n    \"Price\": 30000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{product_url}}/products",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProductById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{product_url}}/products/018d2605-1fef-4cbf-b9b4-cbf999a85cc1",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"products",
+								"018d2605-1fef-4cbf-b9b4-cbf999a85cc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{product_url}}/health",
+							"host": [
+								"{{product_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "GetCart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cart_url}}/cart",
+							"host": [
+								"{{cart_url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Cart\": \r\n        {\r\n            \r\n            \"Items\": [\r\n                {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Red\",\r\n                \"Price\": 70000,\r\n                \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n                \"ProductName\": \"IPhone 16 Pro Max\"\r\n                },\r\n                {\r\n                \"Quantity\": 1,\r\n                \"Color\": \"Blue\",\r\n                \"Price\": 15000,\r\n                \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n                \"ProductName\": \"Samsung S25\"\r\n                }\r\n            ]  \r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cart_url}}/cart",
+							"host": [
+								"{{cart_url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{cart_url}}/cart",
+							"host": [
+								"{{cart_url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckoutCart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"CartCheckoutDto\": \r\n         {\t\t  \r\n\t\t  \"CustomerId\": \"58C49479-EC65-4DE2-86E7-033C546291AA\",\t\t\r\n\t\t  \"firstName\": \"ysf\",\r\n\t\t  \"lastName\": \"q\",\r\n\t\t  \"emailAddress\": \"yusuf@gmail.com\",\r\n\t\t  \"addressLine\": \"istanbul\",\r\n\t\t  \"country\": \"Turkey\",\r\n\t\t  \"state\": \"istanbul\",\r\n\t\t  \"zipCode\": \"34000\",\r\n\t\t  \"cardName\": \"yusuf\",\r\n\t\t  \"cardNumber\": \"485-3184\",\r\n\t\t  \"expiration\": \"11/30\",\r\n\t\t  \"cvv\": \"333\",\r\n\t\t  \"paymentMethod\": 1\r\n\t\t}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cart_url}}/cart/checkout",
+							"host": [
+								"{{cart_url}}"
+							],
+							"path": [
+								"cart",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cart_url}}/health",
+							"host": [
+								"{{cart_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchasing",
+			"item": [
+				{
+					"name": "POST Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Order\": \r\n        {\r\n        \t\"CustomerId\": \"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d\",\r\n            \"OrderName\": \"ORD_4\",\r\n            \"ShippingAddress\": \r\n            \t{\r\n            \t\t\"FirstName\": \"ysf\",\r\n\t                \"LastName\": \"q\",\r\n\t                \"EmailAddress\": \"yusuf@gmail.com\",\r\n\t                \"AddressLine\": \"istanbul\",\r\n\t                \"Country\": \"Turkey\",\r\n\t                \"State\": \"istanbul\",\r\n\t                \"ZipCode\": \"34000\"\r\n            \t},\r\n            \"BillingAddress\": \r\n            \t{\r\n            \t    \"FirstName\": \"ysf\",\r\n\t                \"LastName\": \"q\",\r\n\t                \"EmailAddress\": \"yusuf@gmail.com\",\r\n\t                \"AddressLine\": \"istanbul\",\r\n\t                \"Country\": \"Turkey\",\r\n\t                \"State\": \"istanbul\",\r\n\t                \"ZipCode\": \"34000\"\r\n            \t},\r\n            \"Payment\": \r\n            \t{\r\n            \t\t\"CardName\": \"CARD_1\",\r\n\t                \"CardNumber\": \"485-3184\",\r\n\t                \"Expiration\": \"11/30\",\r\n\t                \"Cvv\": \"333\",\r\n\t                \"PaymentMethod\": 1\r\n            \t},\r\n            \"Status\": 2,\r\n            \"OrderItems\": [\r\n                {\r\n\t                \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n\t                //\"ProductName\": \"IPhone 16 Pro Max\",\r\n\t                \"Quantity\": 1,\r\n\t                \"Price\": 70000\r\n                },\r\n                {\r\n\t                \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n\t                //\"ProductName\": \"Samsung S25\",\r\n\t                \"Quantity\": 1,\r\n\t                \"Price\": 45000\r\n                }\r\n            ]  \r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{purchasing_url}}/purchases",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Purchase",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Order\": \r\n        {\r\n            \"Id\": \"354c00f6-b04c-46ed-8d6d-f9f42d7bdf98\",\r\n        \t\"CustomerId\": \"58c49479-ec65-4de2-86e7-033c546291aa\",\r\n            \"OrderName\": \"ORD_5\",\r\n            \"ShippingAddress\": \r\n            \t{\r\n            \t\t\"FirstName\": \"ysfUpdated\",\r\n\t                \"LastName\": \"qUpdated\",\r\n\t                \"EmailAddress\": \"yusufUpdated@gmail.com\",\r\n\t                \"AddressLine\": \"istanbulUpdated\",\r\n\t                \"Country\": \"TurkeyUpdated\",\r\n\t                \"State\": \"istanbulUpdated\",\r\n\t                \"ZipCode\": \"35000\"\r\n            \t},\r\n            \"BillingAddress\": \r\n            \t{\r\n            \t\t\"FirstName\": \"ysfUpdated\",\r\n\t                \"LastName\": \"qUpdated\",\r\n\t                \"EmailAddress\": \"yusufUpdated@gmail.com\",\r\n\t                \"AddressLine\": \"istanbulUpdated\",\r\n\t                \"Country\": \"TurkeyUpdated\",\r\n\t                \"State\": \"istanbulUpdated\",\r\n\t                \"ZipCode\": \"35000\"\r\n            \t},\r\n            \"Payment\": \r\n            \t{\r\n            \t\t\"CardName\": \"CARD_3\",\r\n\t                \"CardNumber\": \"875-444-3739\",\r\n\t                \"Expiration\": \"12/29\",\r\n\t                \"CVV\": \"455\",\r\n\t                \"PaymentMethod\": 1\r\n            \t},\r\n            \"Status\": 2,\r\n            \"OrderItems\": [\r\n                {\r\n\t                \"ProductId\": \"5334c996-8457-4cf0-815c-ed2b77c4ff61\",\r\n\t                //\"ProductName\": \"IPhone 16 Pro Max\",\r\n\t                \"Quantity\": 2,\r\n\t                \"Price\": 70000\r\n                },\r\n                {\r\n\t                \"ProductId\": \"c67d6323-e8b1-4bdf-9a75-b0d0d2e7e914\",\r\n\t                //\"ProductName\": \"Samsung S25\",\r\n\t                \"Quantity\": 2,\r\n\t                \"Price\": 45000\r\n                }\r\n            ]  \r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{purchasing_url}}/purchases",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Purchases w/ Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{purchasing_url}}/purchases?PageIndex=0&PageSize=2",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Purchases by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{purchasing_url}}/purchases/ORD_2",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases",
+								"ORD_2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Purchases by Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{purchasing_url}}/purchases/customer/189dc8dc-990f-48e0-a37b-e6f2b60b9d7d",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases",
+								"customer",
+								"189dc8dc-990f-48e0-a37b-e6f2b60b9d7d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Purchase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{purchasing_url}}/purchases/354c00f6-b04c-46ed-8d6d-f9f42d7bdf98",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"purchases",
+								"354c00f6-b04c-46ed-8d6d-f9f42d7bdf98"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{purchasing_url}}/health",
+							"host": [
+								"{{purchasing_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

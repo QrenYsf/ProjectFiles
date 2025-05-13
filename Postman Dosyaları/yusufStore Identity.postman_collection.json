@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "06f1baf5-e211-4f18-85f0-d92ffa9fe7b2",
+		"name": "yusufStore Identity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43498695",
+		"_collection_link": "https://is7anbul-5108473.postman.co/workspace/is7anbul's-Workspace~caab98a5-c50b-4b53-8496-ed10c1872012/collection/43498695-06f1baf5-e211-4f18-85f0-d92ffa9fe7b2?action=share&source=collection_link&creator=43498695"
+	},
+	"item": [
+		{
+			"name": "client_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"access_token\",pm.response.json().access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{identity_url}}/realms/{{realm}}/protocol/openid-connect/token",
+					"host": [
+						"{{identity_url}}"
+					],
+					"path": [
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attributes\": {\r\n      \"email\": [\"yusuf@gmail.com\"],\r\n      \"zipcode\": [\"12345\"],\r\n      \"street\": 10,\r\n      \"region\":\"50\"     \r\n    }, \r\n    \"credentials\": [\r\n        {\r\n            \"temporary\": false,\r\n            \"type\": \"password\",\r\n            \"value\": \"12345\"\r\n        }\r\n    ],\r\n    \"username\": \"yusuf\",\r\n    \"firstName\": \"yusuf\",\r\n    \"lastName\": \"k\",\r\n    \"email\": \"yusuf@gmail.com\",\r\n    \"emailVerified\": false,\r\n    \"enabled\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{identity_url}}/admin/realms/{{realm}}/users",
+					"host": [
+						"{{identity_url}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"access_token\",pm.response.json().access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "yusuf",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{identity_url}}/realms/{{realm}}/protocol/openid-connect/token",
+					"host": [
+						"{{identity_url}}"
+					],
+					"path": [
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{identity_url}}/admin/realms/{{realm}}/users/",
+					"host": [
+						"{{identity_url}}"
+					],
+					"path": [
+						"admin",
+						"realms",
+						"{{realm}}",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "realm",
+			"value": "yusufRealm",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "yusufClient",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "o9AqGXPh8GbnTkEIWJtSnhPdfAjPBSth",
+			"type": "string"
+		}
+	]
+}
